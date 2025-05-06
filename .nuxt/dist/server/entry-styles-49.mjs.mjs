@@ -1,5 +1,0 @@
-const VaMonthPicker = ".va-month-picker{display:grid;grid-template-columns:repeat(3,1fr);grid-gap:var(--va-date-picker-cell-gap);min-width:calc(var(--va-date-picker-cell-size)*7 + var(--va-date-picker-cell-gap)*6);width:100%}.va-month-picker__month-wrapper{border-radius:var(--va-date-picker-cell-radius);overflow:hidden;text-align:center;-webkit-user-select:none;-moz-user-select:none;user-select:none}";
-export {
-  VaMonthPicker as default
-};
-//# sourceMappingURL=entry-styles-49.mjs.mjs.map

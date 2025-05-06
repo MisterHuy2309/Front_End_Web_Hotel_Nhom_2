@@ -1,5 +1,0 @@
-const VaListLabel = ":host,:root{--va-list-width:100%;--va-list-label-text-align:center;--va-list-label-padding:.3rem 0;--va-list-item-display:flex;--va-list-item-align-items:center;--va-list-item-width:100%;--va-list-item-height:100%;--va-list-item-label-color:#34495e;--va-list-item-label-display:-webkit-box;--va-list-item-label-box-orient:vertical;--va-list-item-label-overflow:hidden;--va-list-item-label-line-height:normal;--va-list-item-label-caption-font-size:85%;--va-list-item-label-caption-color:#babfc2;--va-list-item-section-display:flex;--va-list-item-section-icon-min-width:1.5rem;--va-list-item-section-icon-align-items:center;--va-list-item-section-icon-justify-content:center;--va-list-item-section-icon-margin:.6rem .75rem;--va-list-item-section-icon-font-size:1.25rem;--va-list-item-section-avatar-min-width:3rem}.va-list-label{font-family:var(--va-font-family);font-size:.625rem;font-weight:700;letter-spacing:.6px;line-height:1.2;padding:var(--va-list-label-padding);text-align:var(--va-list-label-text-align);text-transform:uppercase}";
-export {
-  VaListLabel as default
-};
-//# sourceMappingURL=entry-styles-56.mjs.mjs.map

@@ -1,1 +1,0 @@
-{"file":"Pinia.mjs","mappings":";;AAGA,MAAA,oDAAe,iBAAiB,CAAC,YAAY;AAC3C,UAAQ,OAAO,IAAI,YAAa,CAAA;AAClC,CAAC;","names":[],"sources":["../../../../plugins/Pinia.js"],"sourcesContent":["// plugins/pinia.js\r\nimport { createPinia } from 'pinia';\r\n\r\nexport default defineNuxtPlugin((nuxtApp) => {\r\n  nuxtApp.vueApp.use(createPinia());\r\n});\r\n"],"version":3}

@@ -1,11 +1,4 @@
 
-<!-- Trang Thọ Code xin đừng động vào  -->
-<!-- Trang Thọ Code xin đừng động vào  -->
-<!-- Trang Thọ Code xin đừng động vào  -->
-<!-- Trang Thọ Code xin đừng động vào  -->
-<!-- Trang Thọ Code xin đừng động vào  -->
-<!-- Trang Thọ Code xin đừng động vào  -->
-<!-- Trang Thọ Code xin đừng động vào  -->
 
 <template>
   <div class="set-password-page min-h-screen flex items-center justify-center bg-white">

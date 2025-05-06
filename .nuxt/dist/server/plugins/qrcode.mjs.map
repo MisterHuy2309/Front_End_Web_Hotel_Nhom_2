@@ -1,1 +1,0 @@
-{"version":3,"file":"qrcode.mjs","sources":["../../../../plugins/qrcode.js"],"sourcesContent":["import QRCodeVue from 'qrcode.vue';\r\n\r\nexport default defineNuxtPlugin((nuxtApp) => {\r\n  nuxtApp.provide('QRCodeVue', QRCodeVue);\r\n});"],"names":["QRCodeVue"],"mappings":";;AAEA,MAAA,qDAAe,iBAAiB,CAAC,YAAY;AAC3C,UAAQ,QAAQ,aAAaA,SAAS;AACxC,CAAC;"}

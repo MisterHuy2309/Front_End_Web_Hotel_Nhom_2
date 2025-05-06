@@ -1,5 +1,0 @@
-const VaAvatarGroup = ":root{--va-avatar-group-gap:-1rem}.va-avatar-group{display:flex;flex-wrap:nowrap}.va-avatar-group .va-avatar+.va-avatar{margin-left:var(--va-avatar-group-gap)}.va-avatar-group--vertical{flex-direction:column}.va-avatar-group--vertical .va-avatar+.va-avatar{margin-left:0;margin-top:var(--va-avatar-group-gap)}";
-export {
-  VaAvatarGroup as default
-};
-//# sourceMappingURL=entry-styles-16.mjs.mjs.map
