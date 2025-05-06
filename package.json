@@ -49,7 +49,7 @@
     "vue-instantsearch": "^4.20.7",
     "vue-pdf-embed": "^2.1.2",
     "vue-qr-reader": "^1.6.2",
-    "vue-router": "^4.5.0",
+    "vue-router": "^4.5.1",
     "vue3-apexcharts": "^1.8.0",
     "vuestic-ui": "^1.10.3",
     "xlsx": "^0.18.5"
