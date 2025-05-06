@@ -93,22 +93,21 @@
             <p class="room-bed-type">{{ translations.bedType }}: {{ room.kieuGiuong }}</p>
             <span
               class="room-status"
-              :class="room.trangThai === 'Còn trống' ? 'available' : 'booked'"
+              :class="room.tinhTrang === '1' ? 'available' : 'booked'"
             >
-              {{ room.trangThai === 'Còn trống' ? translations.available : translations.booked }}
+              {{ room.tinhTrang === '1' ? translations.available : translations.booked }}
             </span>
           </va-card-content>
-          <va-card-actions>
+          <va-card-actions class="card-actions">
             <nuxt-link :to="`/phong/${room.maPhong}`" class="view-details">
               <va-button color="primary">{{ translations.viewDetails }}</va-button>
             </nuxt-link>
-            <va-button color="success" @click="addToCart(room)">{{ translations.addToCart }}</va-button>
           </va-card-actions>
         </va-card>
       </div>
 
       <!-- Nếu không có phòng -->
-      <VaAlert v-else v-if="!loading" type="info" class="no-services">
+      <VaAlert v-else type="info" class="no-services">
         {{ translations.noRooms }}
       </VaAlert>
     </VaInnerLoading>
@@ -172,21 +171,35 @@ const sortRooms = (order) => {
 const addToCart = (room) => {
   alert(`${translations.value.addToCart}: ${room.loaiPhong}`);
 };
+
+const filterByRoomType = (type) => {
+  filters.value.loaiPhong = type;
+  filterRooms();
+};
 </script>
 
 <style scoped>
+
 .container {
+
+  max-width: 1400px;
+  margin: auto;
   padding: 20px;
+  font-family: 'Arial', sans-serif;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .header {
   text-align: center;
-  margin-bottom: 20px;
-}
+  font-size: 2rem;
+  
 
+}
 .dark-mode-switch {
   text-align: right;
-  margin-bottom: 20px;
+ 
 }
 
 .filter-form {
@@ -195,7 +208,7 @@ const addToCart = (room) => {
   gap: 20px;
   margin-bottom: 20px;
   background-color: #f9f9f9;
-  padding: 20px;
+
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -204,7 +217,7 @@ const addToCart = (room) => {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  flex: 1 1 calc(20% - 20px);
+ 
 }
 
 .filter-group label {
@@ -227,7 +240,7 @@ const addToCart = (room) => {
 .room-card {
   border: 2px solid #ccc;
   border-radius: 10px;
-  padding: 15px;
+  
   text-align: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
@@ -247,14 +260,50 @@ const addToCart = (room) => {
 .room-status {
   margin-top: 10px;
   font-weight: bold;
+  display: inline-block;
+  padding: 5px 10px !important;
+  border-radius: 5px !important;
+  font-size: 0.9rem !important;
 }
 
 .room-status.available {
-  color: green;
+  background-color: #2ecc71 !important; /* Màu xanh lá */
+  color: #ffffff !important; /* Chữ màu trắng */
 }
 
 .room-status.booked {
-  color: red;
+  background-color: #e74c3c !important; /* Màu đỏ */
+  color: #ffffff !important; /* Chữ màu trắng */
+}
+
+.va-button {
+  font-size: 0.9rem !important;
+  padding: 10px 15px !important;
+  border-radius: 5px !important;
+}
+
+.va-button[disabled] {
+  background-color: #cccccc !important; /* Màu xám cho nút bị vô hiệu hóa */
+  color: #666666 !important;
+  cursor: not-allowed !important;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: center; /* Căn giữa nút "Xem chi tiết" */
+}
+
+.dummy-buttons {
+  display: flex;
+  justify-content: center; /* Căn giữa các nút giả */
+  gap: 10px; /* Khoảng cách giữa các nút */
+  margin: 20px 0; /* Khoảng cách trên và dưới */
+}
+
+.dummy-buttons .va-button {
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 5px;
 }
 
 /* Dark Mode Styles */

@@ -1,5 +1,0 @@
-const VaMenuItem = '.va-menu-item{cursor:pointer;display:table-row;position:relative;z-index:0}.va-menu-item:after{background:var(--va-menu-item-hover-color);content:"";height:100%;left:0;opacity:0;position:absolute;top:0;transition:all .3s ease-in-out;width:100%;z-index:-1}.va-menu-item__cell{display:table-cell;vertical-align:middle}.va-menu-item__cell--center{padding:0 var(--va-menu-padding-x);text-align:left;width:100%}.va-menu-item__cell--left,.va-menu-item__cell--right{min-width:1px;padding:0 var(--va-menu-padding-x);text-align:center;white-space:nowrap}.va-menu-item__cell--left:empty,.va-menu-item__cell--right:empty{padding:0}.va-menu-item__cell--left{padding-right:0}.va-menu-item__cell--right{padding-left:0}.va-menu-item:hover:after{background:var(--va-menu-item-hover-color);opacity:var(--va-menu-item-hover-opacity)}.va-menu-item--disabled{cursor:not-allowed;opacity:.5}.va-menu-item--keyboard-focus{border-radius:2px;outline:2px solid var(--va-focus)!important}';
-export {
-  VaMenuItem as default
-};
-//# sourceMappingURL=entry-styles-110.mjs.mjs.map

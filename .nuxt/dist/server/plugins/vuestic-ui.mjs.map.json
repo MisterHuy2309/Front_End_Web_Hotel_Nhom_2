@@ -1,1 +1,0 @@
-{"file":"vuestic-ui.mjs","mappings":";;AAEA,MAAA,yDAAe,iBAAiB,CAAC,YAAY;AACnC,UAAA,OAAO,IAAI,eAAe;AACpC,CAAC;","names":[],"sources":["../../../../plugins/vuestic-ui.ts"],"sourcesContent":["import { createVuestic } from 'vuestic-ui';\r\n\r\nexport default defineNuxtPlugin((nuxtApp) => {\r\n  nuxtApp.vueApp.use(createVuestic());\r\n});"],"version":3}

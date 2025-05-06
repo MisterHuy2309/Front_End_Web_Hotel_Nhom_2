@@ -1,5 +1,0 @@
-const VaScrollContainer = ":root{--va-scroll-container-scrollbar-gradient-to:var(--va-background-primary)}.va-scroll-container{direction:var(--va-scrollbar-position);height:100%;overflow-x:var(--va-overflow-x);overflow-y:var(--va-overflow-y);scrollbar-color:var(--va-scroll-color) transparent;scrollbar-width:thin;transition:scrollbar-color .3s ease-in-out;width:100%}.va-scroll-container::-webkit-scrollbar{height:var(--va-scrollbar-size);width:var(--va-scrollbar-size)}.va-scroll-container::-webkit-scrollbar-track{border-radius:10px;box-shadow:none}.va-scroll-container::-webkit-scrollbar-thumb{background:var(--va-scroll-color);border-radius:2px;opacity:.3;-webkit-transition:background .3s ease-in-out;transition:background .3s ease-in-out}.va-scroll-container__content{direction:ltr;height:-webkit-fill-available;height:-moz-available;height:stretch;width:-webkit-fill-available;width:-moz-available;width:stretch}";
-export {
-  VaScrollContainer as default
-};
-//# sourceMappingURL=entry-styles-107.mjs.mjs.map

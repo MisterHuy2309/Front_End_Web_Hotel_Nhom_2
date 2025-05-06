@@ -1,5 +1,0 @@
-const VaFileUploadUndo = ":host,:root{--va-file-upload-undo-button-line-height:1.1428;--va-file-upload-undo-button-margin-top:0;--va-file-upload-undo-button-margin-bottom:0;--va-file-upload-undo-margin-left:.5rem}.va-file-upload-undo-progress-bar{left:0;position:absolute;top:0;--va-progress-bar-transition:width var(--va-undo-duration-style) linear}.va-file-upload-undo{align-items:center;display:flex;flex-wrap:wrap;justify-content:space-between}.va-file-upload-undo__button{line-height:var(--va-file-upload-undo-button-line-height);margin-bottom:var(--va-file-upload-undo-button-margin-bottom);margin-left:var(--va-file-upload-undo-margin-left);margin-top:var(--va-file-upload-undo-button-margin-top)}.va-file-upload-undo--vertical{align-content:center;align-items:center;justify-content:center;padding:var(--va-file-upload-undo-padding)}.va-file-upload-undo--vertical .va-file-upload-undo__text{margin:1rem 0 0;text-align:center}.va-file-upload-undo--vertical .va-file-upload-undo__button{margin:1rem 0 0}";
-export {
-  VaFileUploadUndo as default
-};
-//# sourceMappingURL=entry-styles-61.mjs.mjs.map

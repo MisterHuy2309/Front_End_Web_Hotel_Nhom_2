@@ -1,0 +1,6 @@
+# Ignore Nuxt.js build và cache
+.nuxt/
+node_modules/
+
+# Ignore Vite cache
+node_modules/.cache/vite/

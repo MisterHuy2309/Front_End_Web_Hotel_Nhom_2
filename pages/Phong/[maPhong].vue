@@ -33,7 +33,20 @@
         <p><strong>🏢 Tầng:</strong> {{ room.tang }}</p>
         <p><strong>🛏️ Kiểu giường:</strong> {{ room.kieuGiuong }}</p>
         <p><strong>📝 Mô tả:</strong> {{ room.moTa }}</p>
-        <p><strong>📶 Tiện nghi:</strong> {{ room.tienNghiList.join(', ') }}</p>
+        <p><strong>📶 Tiện nghi:</strong></p>
+        <div class="amenities animate__animated animate__fadeIn">
+          <div
+            class="amenity animate__animated animate__bounce"
+            v-for="(amenity, index) in room.tienNghiList"
+            :key="index"
+          >
+            <i
+              :class="amenitiesMap[amenity]?.icon || defaultAmenityIcon"
+              class="amenity-icon"
+            ></i>
+            <span class="amenity-name">{{ amenity }}</span>
+          </div>
+        </div>
         <p>
           <strong>🔥 Trạng thái:</strong>
           <span :class="room.tinhTrang === '1' ? 'status-available' : 'status-unavailable'">
@@ -92,6 +105,25 @@ const images = ref([])
 const subImages = ref([])
 const currentSlide = ref(0)
 const isImageModalOpen = ref(false)
+
+const amenitiesMap = {
+  "Máy lạnh": { icon: "fas fa-snowflake" }, // Icon điều hòa
+  "Wifi miễn phí": { icon: "fas fa-wifi" }, // Icon wifi
+  "Bộ trà/cà phê": { icon: "fas fa-mug-hot" }, // Icon tách trà/cà phê
+  "Tivi": { icon: "fa-solid fa-tv" }, // Icon TV
+  "Tủ lạnh": { icon: "fas fa-ice-cream" }, // Icon tủ lạnh
+  "Bồn tắm": { icon: "fas fa-bath" }, // Icon bồn tắm
+  "Mini Bar": { icon: "fa-solid fa-martini-glass-empty" }, // Icon mini bar (chọn chai rượu làm biểu tượng)
+ // Icon mini bar
+  "Máy sấy tóc": { icon: "fas fa-blow-dryer" }, // Icon máy sấy tóc
+  "Bàn làm việc": { icon: "fas fa-desktop" }, // Icon bàn làm việc
+  "Bồn cầu": { icon: "fas fa-toilet" }, // Icon bồn cầu
+  "Bồn rửa mặt": { icon: "fas fa-sink" }, // Icon bồn rửa mặt
+  "Máy giặt": { icon: "fas fa-washing-machine" }, // Icon máy giặt
+  "Bếp": { icon: "fas fa-utensils" } // Icon bếp
+};
+
+const defaultAmenityIcon = "ri-question-line"; // Remix Icon mặc định
 
 onMounted(async () => {
   try {
@@ -152,7 +184,7 @@ const shareRoom = async () => {
 
 .room-details-container.dark-mode {
   background-color: #2c3e50;
-  color: #f0f0f0;
+  color: #894040;
 }
 
 .room-gallery {
@@ -184,13 +216,21 @@ const shareRoom = async () => {
 .gallery-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* Cắt gọn ảnh để vừa với khung */
   cursor: pointer;
   transition: transform 0.3s;
 }
 
-.gallery-img:hover {
-  transform: scale(1.05);
+.sub-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cắt gọn ảnh phụ để vừa với khung */
+  border-radius: 5px;
+  transition: transform 0.3s;
+}
+
+.sub-image img:hover {
+  transform: scale(1.05); /* Hiệu ứng phóng to khi hover */
 }
 
 /* Modal phóng to */
@@ -249,8 +289,29 @@ const shareRoom = async () => {
 }
 
 .room-details-container.dark-mode .room-info {
-  background-color: #6a1b9a; /* Màu tím đậm cho Dark Mode */
-  color: #f0f0f0;
+  background-color: #151515 !important; /* Bắt buộc sử dụng màu tím đậm */
+  color: #ffffff !important; /* Chữ màu trắng */
+}
+
+.room-details-container.dark-mode .amenity-icon {
+  color: #ffffff; /* Icon màu trắng */
+}
+
+.room-details-container.dark-mode .amenity-name {
+  color: #ffffff; /* Tên tiện nghi màu trắng */
+}
+
+.room-details-container.dark-mode .room-title {
+  color: #ffffff !important;
+  border-bottom: 2px solid #ffffff; /* Đường gạch dưới màu trắng */
+}
+
+.room-details-container.dark-mode .status-available {
+  color: #2ecc71; /* Màu xanh lá cho trạng thái "Còn trống" */
+}
+
+.room-details-container.dark-mode .status-unavailable {
+  color: #e74c3c; /* Màu đỏ cho trạng thái "Đã đặt" */
 }
 
 .info-content {
@@ -278,6 +339,32 @@ const shareRoom = async () => {
 .status-unavailable {
   color: red;
   font-weight: bold;
+}
+
+.amenities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.amenity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 80px;
+}
+
+.amenity-icon {
+  font-size: 2rem; /* Kích thước icon */
+  color: #4caf50; /* Màu sắc icon */
+  margin-bottom: 5px;
+}
+
+.amenity-name {
+  font-size: 0.9rem;
+  color: #333;
 }
 
 .actions {

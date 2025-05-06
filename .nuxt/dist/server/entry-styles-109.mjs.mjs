@@ -1,5 +1,0 @@
-const VaTextarea = ".va-textarea .va-input-wrapper__field{align-items:flex-start;padding-bottom:12px;padding-top:12px}.va-textarea__resize-wrapper{align-self:stretch;display:flex;overflow:hidden;width:100%}.va-textarea__resize-wrapper--resizable{resize:vertical}.va-textarea__textarea{background:transparent;border:0;box-sizing:content-box;color:currentColor;flex:1;font-family:var(--va-font-family);min-height:1.15rem;outline:none;position:relative;resize:none;scrollbar-color:var(--va-secondary) transparent;scrollbar-width:thin;transition:scrollbar-color .3s ease-in-out;width:100%}.va-textarea__textarea::-webkit-scrollbar{height:4px;width:4px}.va-textarea__textarea::-webkit-scrollbar-track{border-radius:10px;box-shadow:none}.va-textarea__textarea::-webkit-scrollbar-thumb{background:var(--va-secondary);border-radius:2px;opacity:.3;-webkit-transition:background .3s ease-in-out;transition:background .3s ease-in-out}.va-textarea__textarea--autosize{overflow:hidden}";
-export {
-  VaTextarea as default
-};
-//# sourceMappingURL=entry-styles-109.mjs.mjs.map
