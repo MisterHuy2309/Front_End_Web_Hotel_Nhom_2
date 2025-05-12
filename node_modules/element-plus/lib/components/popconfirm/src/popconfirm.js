@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var iconsVue = require('@element-plus/icons-vue');
-var button = require('../../button/src/button2.js');
+var button = require('../../button/src/button.js');
 var runtime = require('../../../utils/vue/props/runtime.js');
 var icon = require('../../../utils/vue/icon.js');
 var content = require('../../tooltip/src/content.js');

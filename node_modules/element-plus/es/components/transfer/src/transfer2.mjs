@@ -3,7 +3,7 @@ import { ElButton } from '../../button/index.mjs';
 import { ElIcon } from '../../icon/index.mjs';
 import { ArrowLeft, ArrowRight } from '@element-plus/icons-vue';
 import { transferProps, transferEmits } from './transfer.mjs';
-import TransferPanel from './transfer-panel2.mjs';
+import TransferPanel from './transfer-panel.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
 import { useComputedData } from './composables/use-computed-data.mjs';
 import { useMove } from './composables/use-move.mjs';

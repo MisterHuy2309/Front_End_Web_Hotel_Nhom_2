@@ -20,10 +20,15 @@ export function useLogin() {
 
   const emailLogin = () => {
     if (formEmail.value === 'admin@example.com' && formPassword.value === 'password') {
-      email.value = `Đăng nhập email: ${formEmail.value}`
-      facebookName.value = ''
+      // Lưu thông tin đăng nhập vào localStorage
+      localStorage.setItem('isLoggedIn', 'true')
+      localStorage.setItem('userEmail', formEmail.value)
+      
+      // Chuyển hướng sẽ được xử lý ở component
+      return true
     } else {
       alert('Sai email hoặc mật khẩu!')
+      return false
     }
   }
 

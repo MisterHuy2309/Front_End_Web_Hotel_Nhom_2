@@ -1,4 +1,3 @@
-
 <!-- Trang Thọ Code xin đừng động vào  -->
 <!-- Trang Thọ Code xin đừng động vào  -->
 <!-- Trang Thọ Code xin đừng động vào  -->
@@ -6,185 +5,214 @@
 <!-- Trang Thọ Code xin đừng động vào  -->
 <!-- Trang Thọ Code xin đừng động vào  -->
 <!-- Trang Thọ Code xin đừng động vào  -->
-
-
-
 
 <template>
-  <div class="login-page min-h-screen w-full flex items-center justify-center bg-cover bg-center" style="background-image: url('/images/login-bg.jpg')">
-    <!-- Modal đăng nhập -->
-    <div class="login-modal bg-white rounded-md shadow-lg w-full max-w-md p-8 relative">
-      <!-- Nút đóng -->
-      <button class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
-        <i class="fas fa-times"></i>
-      </button>
-      
-      <!-- Avatar giả -->
-      <div class="flex justify-center mb-5">
-        <div class="avatar-placeholder w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center">
-          <svg class="w-8 h-8 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-          </svg>
+  <div class="login-page min-h-screen w-full flex">
+    <!-- Phần hình ảnh bên trái với slideshow -->
+    <div class="hidden lg:block lg:w-1/2 relative overflow-hidden bg-gray-900">
+      <div v-for="(image, index) in hotelImages" 
+           :key="index"
+           class="absolute inset-0 w-full h-full"
+           :class="{ 'active': currentImageIndex === index }">
+           <img :src="image" 
+                :alt="`Luxury Hotel ${index + 1}`" 
+                class="w-full h-full object-cover transform transition-all duration-1000 ease-in-out"
+                :class="{
+                  'opacity-100 scale-100': currentImageIndex === index,
+                  'opacity-0 scale-110': currentImageIndex !== index
+                }">
+      </div>
+      <div class="relative h-full w-full bg-black bg-opacity-50 flex items-center justify-center p-12 z-30 backdrop-blur-sm">
+        <div class="text-white max-w-xl">
+          <h1 class="text-4xl font-bold mb-4">Tận hưởng kỳ nghỉ sang trọng của bạn</h1>
+          <p class="text-lg">Khám phá trải nghiệm lưu trú độc đáo và đẳng cấp tại khách sạn của chúng tôi. Đặt phòng ngay hôm nay!</p>
         </div>
       </div>
-      
-      <!-- Tiêu đề -->
-      <div class="text-center mb-6">
-        <h1 class="text-xl font-semibold">Log in</h1>
-        <p class="text-sm text-gray-500 mt-1">
-          Don't have an account? 
-          <a href="/Register" class="text-gray-900 font-medium hover:underline">Sign up</a>
-        </p>
-      </div>
-      
-      <!-- Đăng nhập bằng mạng xã hội -->
-      <va-button
-        class="w-full mb-3 justify-center"
-        color="transparent"
-        border
-        @click="facebookLogin"
-      >
-        <template #prepend>
-          <i class="fab fa-facebook text-blue-600 me-2"></i>
-        </template>
-        Log in with Facebook
-      </va-button>
-      
-      <va-button
-        class="w-full mb-6 justify-center"
-        color="transparent"
-        border
-        @click="googleLogin"
-      >
-        <template #prepend>
-          <i class="fab fa-google text-red-500 me-2"></i>
-        </template>
-        Log in with Google
-      </va-button>
-      
-      <!-- Divider -->
-      <div class="flex items-center mb-6">
-        <div class="flex-grow border-t border-gray-200"></div>
-        <div class="mx-4 text-gray-400 text-sm">OR</div>
-        <div class="flex-grow border-t border-gray-200"></div>
-      </div>
-      
-      <!-- Form đăng nhập email -->
-      <form @submit.prevent="emailLogin">
-        <div class="mb-4">
-          <label for="email" class="block text-sm font-normal text-gray-600 mb-1">Your email</label>
-          <va-input 
-            v-model="formEmail" 
-            id="email"
-            type="email"
-            placeholder="Email address"
-            class="w-full"
-            required
-          />
+    </div>
+    
+    <!-- Phần form login bên phải -->
+    <div class="w-full lg:w-1/2 bg-white flex items-center justify-center p-4 md:p-12">
+      <div class="w-full max-w-md">
+        <!-- Tiêu đề -->
+        <div class="text-center mb-10">
+          <h1 class="text-3xl font-bold text-gray-800">Đăng nhập</h1>
+          <p class="text-gray-500 mt-2">
+            Chưa có tài khoản? 
+            <a href="/Register" class="text-blue-600 font-medium hover:underline">Đăng ký ngay</a>
+          </p>
         </div>
         
-        <div class="mb-1">
-          <label for="password" class="block text-sm font-normal text-gray-600 mb-1">Your password</label>
-          <va-input
-            v-model="formPassword"
-            id="password"
-            :type="showPassword ? 'text' : 'password'"
-            placeholder="Password"
-            class="w-full"
-            required
-          >
-            <template #append>
-              <va-button
-                icon
-                size="small"
-                color="gray"
-                @click="togglePassword"
-              >
-                <i :class="showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
-              </va-button>
-            </template>
-          </va-input>
-          <div class="text-right mt-1">
-            <a href="/ForgotPass" class="text-xs text-gray-600 hover:underline">Forgot your password?</a>
+        <!-- Form đăng nhập -->
+        <form @submit.prevent="handleSubmit">
+          <div class="mb-6">
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Địa chỉ email</label>
+            <va-input 
+              v-model="formEmail" 
+              id="email"
+              type="email"
+              placeholder="Nhập địa chỉ email"
+              class="w-full login-input"
+              required
+            />
           </div>
-        </div>
+          
+          <div class="mb-6">
+            <div class="flex items-center justify-between mb-2">
+              <label for="password" class="block text-sm font-medium text-gray-700">Mật khẩu</label>
+              <a href="/ForgotPass" class="text-sm text-blue-600 hover:underline">Quên mật khẩu?</a>
+            </div>
+            <va-input
+              v-model="formPassword"
+              id="password"
+              :type="showPassword ? 'text' : 'password'"
+              placeholder="Nhập mật khẩu"
+              class="w-full login-input"
+              required
+            >
+              <template #append>
+                <va-button
+                  icon
+                  size="small"
+                  color="gray"
+                  @click="togglePassword"
+                >
+                  <i :class="showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+                </va-button>
+              </template>
+            </va-input>
+          </div>
+          
+          <div class="mb-6">
+            <label class="flex items-center">
+              <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600 rounded">
+              <span class="ml-2 text-sm text-gray-700">Ghi nhớ đăng nhập</span>
+            </label>
+          </div>
+          
+          <va-button
+            type="submit" 
+            class="w-full py-3 rounded-lg"
+            color="#1a73e8"
+          >
+            Đăng nhập
+          </va-button>
+        </form>
         
-        <va-button
-          type="submit" 
-          class="w-full mt-4"
-          color="#f0f0f0"
-          text-color="#333"
+        <!-- Thông báo đăng nhập thành công -->
+        <va-alert
+          v-if="email"
+          class="mt-6"
+          color="success"
+          outlined
         >
-          Log in
-        </va-button>
-      </form>
-
-      <!-- Thông báo đăng nhập thành công (nếu có) -->
-      <va-alert
-        v-if="email || facebookName"
-        class="mt-4"
-        color="success"
-        outlined
-      >
-        <p>{{ email }}</p>
-        <p>{{ facebookName }}</p>
-      </va-alert>
+          <p>{{ email }}</p>
+        </va-alert>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { useLogin } from '@/composables/useLogin'
+import { ref, onMounted, onUnmounted } from 'vue'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const {
   email,
-  facebookName,
   formEmail,
   formPassword,
   showPassword,
   togglePassword,
   emailLogin,
-  facebookLogin,
 } = useLogin()
 
-// Thêm hàm đăng nhập Google
-const googleLogin = () => {
-  if (window.google && window.google.accounts && window.google.accounts.id) {
-    window.google.accounts.id.prompt()
-  } else {
-    alert('Google sign-in is not available yet. Please try again later.')
+const handleSubmit = async () => {
+  if (emailLogin()) {
+    await router.push('/')
   }
 }
+
+// Mảng chứa đường dẫn các hình ảnh khách sạn
+const hotelImages = [
+  '/images/hotel-luxury-1.jpg',
+  '/images/hotel-luxury-2.jpg',
+  '/images/hotel-luxury-3.jpg',
+  '/images/hotel-luxury-4.jpg'
+]
+
+const currentImageIndex = ref(0)
+let slideInterval
+
+// Hàm chuyển đổi hình ảnh với hiệu ứng fade
+const nextImage = () => {
+  const nextIndex = (currentImageIndex.value + 1) % hotelImages.length
+  currentImageIndex.value = nextIndex
+}
+
+// Khởi tạo slideshow và preload images
+onMounted(async () => {
+  // Preload images trước
+  await Promise.all(hotelImages.map(src => {
+    return new Promise((resolve) => {
+      const img = new Image()
+      img.onload = resolve
+      img.src = src
+    })
+  }))
+
+  // Bắt đầu slideshow sau khi tải xong ảnh
+  slideInterval = setInterval(nextImage, 4000)
+})
+
+// Dọn dẹp interval khi component bị destroy
+onUnmounted(() => {
+  if (slideInterval) clearInterval(slideInterval)
+})
 </script>
 
 <style scoped>
-.login-modal {
-  animation: fadeIn 0.3s ease-out;
+.active {
+  z-index: 20;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
+@keyframes zoomInOut {
+  0%, 100% {
+    transform: scale(1);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  50% {
+    transform: scale(1.05);
   }
+}
+
+img.opacity-100 {
+  animation: zoomInOut 20s infinite;
 }
 
 :deep(.va-button) {
   letter-spacing: normal;
   text-transform: none;
-  font-weight: normal;
+  font-weight: 600;
 }
 
-:deep(.va-input__container) {
+:deep(.login-input .va-input__container) {
   border: 1px solid #e5e7eb;
   border-radius: 6px;
+  background-color: white;
+  transition: all 0.3s ease;
 }
 
-:deep(.va-input__field) {
-  padding: 8px 12px;
+:deep(.login-input .va-input__field) {
+  padding: 14px 16px;
+  font-size: 15px;
+}
+
+:deep(.login-input .va-input__container:focus-within) {
+  border-color: #1a73e8;
+  box-shadow: 0 4px 12px rgba(26, 115, 232, 0.15);
+}
+
+.form-checkbox {
+  accent-color: #1a73e8;
 }
 </style>
